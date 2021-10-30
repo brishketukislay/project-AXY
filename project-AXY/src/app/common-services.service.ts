@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../environments/environment';
 
-const maiRoute:string = 'https://my-json-server.typicode.com/bokadedarvin/AngularDeveloperSample/';
+const maiRoute:string = environment.maiRoute;
 const route = {
   companiesURL: `${maiRoute+'companies'}`,
   contactPerson:`${maiRoute+'contacts'}`,

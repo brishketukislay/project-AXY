@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production:false,
+  maiRoute : 'https://my-json-server.typicode.com/bokadedarvin/AngularDeveloperSample/',
 };

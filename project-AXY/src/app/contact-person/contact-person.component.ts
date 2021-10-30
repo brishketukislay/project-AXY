@@ -16,24 +16,28 @@ export class ContactPersonComponent implements OnInit {
   enableEdit = false;
   enableEditIndex = null;
   showDialog:any = false;
+  //*********************** Form Control ****************************************/
   addPersonForm = new FormGroup({
     name: new FormControl('',[Validators.required]),
     phone: new FormControl('',[Validators.required]),
     country: new FormControl('',[Validators.required]),
     id:new FormControl('',[Validators.required]),
   })
+
+  //*********************** Form Control to update data ***********************************/
   updatePersonForm = new FormGroup({
     updateName:new FormControl('',[Validators.required]),
     updatePhone: new FormControl('',[Validators.required]),
     updateCountry: new FormControl('',[Validators.required]),
   })
-  constructor(private commonServicesService:CommonServicesService, public dialog: MatDialog) {
-    
-   }
+
+  constructor(private commonServicesService:CommonServicesService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getContactPerson();
   }
+  //*********************** contact person details ****************************************/
   getContactPerson(addContractPerson?:any){
     this.commonServicesService.getContactPerson(addContractPerson).subscribe((data)=>{
       this.contactPersonList = data;
@@ -42,6 +46,11 @@ export class ContactPersonComponent implements OnInit {
       }
     })
   }
+  //***********************  update contact person details ******************************/
+  /**
+   * 
+   * @param id :- id of person for which data needs to be updated
+   */
   updateContactPerson(id: any){
     if(this.updatePersonForm.valid){
     this.contactPersonList.forEach((element: any) => {
@@ -57,6 +66,12 @@ export class ContactPersonComponent implements OnInit {
     alert("Incorrect values");
   }
   }
+
+  //*********************** delete details ****************************************/
+  /**
+   * 
+   * @param id :- id for which data needs to be deleted
+   */
   delete(id: any){
     if(this.contactPersonList.length == 1)
     {
@@ -77,6 +92,8 @@ export class ContactPersonComponent implements OnInit {
   get id(){
     return this.addPersonForm.get('id')?.value;
   }
+
+  //*********************** submit to add new person ********************************/
   onSubmit(){
     if(this.addPersonForm.valid){
     this.getContactPerson(this.addPersonForm.value);
