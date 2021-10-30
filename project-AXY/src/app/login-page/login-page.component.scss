@@ -1,0 +1,35 @@
+@import url('../app.component.scss');
+.login-text{
+    text-align: center;
+    font-size: 35px;
+    margin-top: 80px;
+}
+.login-page{
+    text-align: center;
+    padding: 10px;
+    margin-top: 110px;
+    .email{
+        margin-left: 40px;
+    }
+    .pwd{
+        margin-left: 16px;
+    }
+    .error{
+        color: darkred;
+    }
+}
+.button{
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin-left: 5px;
+    border: none;
+    background-color: cadetblue;
+    color: honeydew;
+    &:hover{
+        background-color: #4c7678;
+    }
+    &:disabled{
+        pointer-events: none;
+        background-color: #d3d3d3;
+    }
+}

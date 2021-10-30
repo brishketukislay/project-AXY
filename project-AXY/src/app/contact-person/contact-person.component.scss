@@ -1,0 +1,51 @@
+@import url('../app.component.scss');
+.contact-person-table{
+    width: 100%;
+    padding: 10px;
+    td{
+        text-align: center;
+    }
+}
+.add-person-form{
+    padding: 10px;
+    width: 25%;
+    margin: 90px auto;
+    .input-box{
+        float: right;
+    }
+    .submit-button{
+        float: right;
+    }
+}
+.update-person{
+    width: 70%;
+    .label{
+        float: left;
+        margin-top: 20px;
+    }
+    .input-text{
+        float: right;
+        margin-top: 20px;
+    }
+    .contact-number{
+        margin-top: 40px;
+        margin-left: -40px;
+    }
+    .country{
+        margin-top: 60px;
+        margin-left: -109px;
+    }
+    .country-text{
+        margin-left: 20px;
+    }
+    .submit-btn{
+        display: block;
+        position: absolute;
+        bottom: 50px;
+        right: 167px;
+    }
+}
+.add-person-alignment{
+    text-align: center;
+    margin-top: 90px;
+}

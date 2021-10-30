@@ -1,0 +1,80 @@
+<table class="contact-person-table" *ngIf='contactPersonList'>
+    <th>
+        id
+    </th>
+    <th>
+        Name
+    </th>
+    <th>
+        Contact Number
+    </th>
+    <th>
+        Country
+    </th>
+    <tr *ngFor='let contactPerson of contactPersonList; let i = index' >
+        <td *ngIf='!update'>
+            {{contactPerson.id}}
+        </td>
+        <input *ngIf='update' type="text">
+        <td *ngIf='!update'>
+            {{contactPerson.name}}
+        </td>
+        <td *ngIf='!update'>
+            {{contactPerson.phone}}
+        </td>
+        <td *ngIf='!update'>
+            {{contactPerson.country}}
+        </td>
+        <form *ngIf='update'>
+            <input type="text">
+        </form>
+        <td>
+            <!-- updateContactPerson(contactPerson.id)' -->
+            <button class="button" (click)="showDialog = !showDialog">Update</button>
+            <app-dialog-box [(visible)]="showDialog" title="My First Mpdal" data-popup="width:300;height:250">
+                <form class="update-person" [formGroup] = "updatePersonForm" (ngSubmit)= "updateContactPerson(contactPerson.id)">
+                    <label class="label">name:</label>
+                    <input class="input-text" matInput formControlName = 'updateName' type="text"><br>
+                    <label class="label contact-number">Contact Number:</label>
+                    <input class="input-text" matInput formControlName = 'updatePhone' type="text"><br>
+                    <label class="label country">County:</label>
+                    <input class="input-text country-text" matInput formControlName = 'updateCountry' type="text"><br>
+                    <button type="submit" class="button submit-btn">Submit</button>
+                </form>
+                
+                
+            </app-dialog-box>
+            <button class="button" (click)='delete(i)'>Delete</button>
+        </td>
+    </tr>
+</table>
+<form [formGroup] = "addPersonForm" (ngSubmit) = "onSubmit()" *ngIf = '!addPersonFlag' 
+class="add-person-form">
+    <label >id:</label>
+    <input matInput class="input-box" formControlName = 'id' type="text" > 
+    <div class="error" *ngIf="id?.errors?.required && id?.touched">
+        id is required 
+      </div><br><br>
+    <label >name:</label>
+    <input matInput class="input-box" formControlName = 'name' type="text" ><br><br>
+    <mat-error class="error" *ngIf="name?.errors?.required && name?.touched">
+        Contact Number is required
+      </mat-error>
+    <label >Contact Number:</label>
+    <input matInput class="input-box" formControlName='phone' type="text" >
+    <mat-error class="error" *ngIf="phone?.errors?.required && phone?.touched">
+        Contact Number is required
+      </mat-error><br><br>
+    <label >Country:</label>
+    <input matInput class="input-box" formControlName='country' type="text" >
+    <mat-error class="error" *ngIf="country?.errors?.required && country?.touched">
+        Country Number is required
+      </mat-error><br><br>
+      <button class="button submit-button" (click)="addPersonFlag = !addPersonFlag">Cancel</button>
+    <button class="button submit-button" type = 'submit'>Submit</button>
+</form>
+<div class="add-person-alignment">
+<button (click)='addPersonFlag =!addPersonFlag' *ngIf = 'addPersonFlag' class="button">
+    Add contact person
+</button>
+</div>

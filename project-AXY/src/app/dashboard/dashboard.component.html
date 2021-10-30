@@ -1,0 +1,12 @@
+<div class="info">Click on respective tile to get Contact Person details</div>
+<div class="container">
+    <div class="company-details" *ngFor="let companyDetails of companyDetails" (click)=redirectToContactPerson()>
+        <img class="logo" [src]=companyDetails.logo [alt] = 'companyDetails.id'>
+        <div class="company-name">
+            {{companyDetails.name}}
+        </div>
+        <div>
+            {{companyDetails.description}}
+        </div>    
+    </div>
+</div>

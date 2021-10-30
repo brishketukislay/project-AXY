@@ -1,0 +1,27 @@
+.container{
+    margin-top: 20px;
+    cursor: pointer;
+    .company-details{
+        display: table-cell;
+        padding: 10px;
+    .logo{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    &:hover{
+        background-color: #a9a9a9;
+    }
+    .company-name{
+        text-align: center;
+    color: floralwhite;
+    font-size: 20px;
+    margin: 5px;
+    }
+}
+}
+.info{
+    color: darkred;
+    margin-top: 20px 10px;
+}

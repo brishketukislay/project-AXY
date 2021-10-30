@@ -1,0 +1,30 @@
+<div class="login-text">Login Page</div>
+<mat-card class="login-page">
+    <mat-card-content>
+<form [formGroup]='loginForm' (ngSubmit)='onSubmit()'>
+    <p>
+        <label class="label">Email:</label>
+        <input class="email" matInput type="email" matInput formControlName="emailFormControl">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> --><br>
+         <mat-error class="error" *ngIf="emailFormControl?.errors?.email && emailFormControl?.touched">
+          please enter a valid email address
+        </mat-error>
+       <mat-error class="error" *ngIf="emailFormControl?.errors?.required && emailFormControl?.touched">
+          Email is required
+        </mat-error>
+        <br>
+        <br>
+        <label class="label">Password:</label>
+        <input class="pwd" matInput type="password" matInput formControlName="pwdFormControl"><br>
+        <mat-error class="error" *ngIf="pwdFormControl?.errors?.required && emailFormControl?.touched">
+          Password is required
+        </mat-error>
+        <mat-error class="error" *ngIf="pwdFormControl?.errors?.pattern && emailFormControl?.touched">
+          Please enter a valid password
+        </mat-error>
+        <br><br>
+    </p>
+    <button type = 'submit' class="button" [disabled] = "buttonStatus()">Login</button>
+</form>
+    </mat-card-content>
+  </mat-card>
